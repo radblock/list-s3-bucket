@@ -1,7 +1,8 @@
 var aws = require('aws-sdk')
+var deps = require('./deps.json')
 
-var S3_BUCKET_TO_WATCH = 'gifs.radblock.xyz'
-var S3_BUCKET_FOR_LIST = 'list.radblock.xyz'
+var S3_BUCKET_TO_WATCH = deps.gif_bucket
+var S3_BUCKET_FOR_LIST = deps.list_bucket
 
 exports.handler = function (event, context, callback) {
   'use strict'
