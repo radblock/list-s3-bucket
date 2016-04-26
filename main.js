@@ -7,6 +7,8 @@ var deps = require('./deps.json')
 var S3_BUCKET_TO_WATCH = deps.gif_bucket
 var S3_BUCKET_FOR_LIST = deps.list_bucket
 
+// this code gets run by Amazon Lambda.
+// lambda wants a function called `exports.handler`, so we'll make one.
 exports.handler = function (event, context, callback) {
   'use strict'
 
