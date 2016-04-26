@@ -1,5 +1,5 @@
 {
-	"name": "list-s3-bucket",
+  "name": "list-s3-bucket",
   "description": "make a list of files in one s3 bucket, and put it in another",
   "private": true,
   "files": [
