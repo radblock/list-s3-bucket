@@ -19,6 +19,7 @@ exports.handler = function (event, context, callback) {
       })
       s3.putObject({
         Bucket: S3_BUCKET_FOR_LIST,
+        ACL: 'public-read',
         Key: 'list.json',
         Body: JSON.stringify(files_list),
         ContentType: 'application/json'
