@@ -17,6 +17,7 @@ exports.handler = function (event, context, callback) {
       var files_list = files.map(function (file) {
         return 'http://' + S3_BUCKET_TO_WATCH + '/' + file.Key
       })
+      console.log('files list', files_list)
       s3.putObject({
         Bucket: S3_BUCKET_FOR_LIST,
         ACL: 'public-read',
@@ -25,8 +26,10 @@ exports.handler = function (event, context, callback) {
         ContentType: 'application/json'
       }, function (err, data) {
         if (err) {
+          console.log('error', err)
           callback(err)
         } else {
+          console.log('return data', data)
           callback(null, data)
         }
       })
