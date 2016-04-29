@@ -24,16 +24,22 @@ exports.handler = function (event, context, callback) {
       // make a list of the file names
       var files = data.Contents
       var files_list = files.map(function (file) {
-        return 'http://' + S3_BUCKET_TO_WATCH + '/' + file.Key
+        return { "image": 'http://' + S3_BUCKET_TO_WATCH + '/' + file.Key }
       })
+      
+      var output = [{
+        works: files_list
+      }]
+      
       console.log('files list', files_list)
+      console.log('output that looks like add-art\'s thingies', output)
       
       // and upload that list to the list bucket
       s3.putObject({
         Bucket: S3_BUCKET_FOR_LIST,
         ACL: 'public-read',
         Key: 'list.json',
-        Body: JSON.stringify(files_list),
+        Body: JSON.stringify(output),
         ContentType: 'application/json'
       }, function (err, data) {
         
